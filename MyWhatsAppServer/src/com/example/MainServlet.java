@@ -64,10 +64,10 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
         String userName = jsonRequest.getString("userName");
         String password = jsonRequest.getString("password");
         if(validateUser(userName, password)) {
-            String recipient = jsonRequest.getString("recipient");
+            User recipient = new User(jsonRequest.getString("recipient"), null);
             if(users.containsKey(recipient)){
                 Message message = new Message(jsonRequest.getString("content"), userName,
-                        recipient, System.currentTimeMillis());
+                        recipient.userName, System.currentTimeMillis());
                 users.get(recipient).messages.add(message);
                 jsonResponse.put("result", "message sent");
             }
@@ -81,7 +81,8 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
         if(validateUser(userName, password)) {
             JSONArray jsonMessages = new JSONArray();
             Message message;
-            PriorityQueue<Message> messages = users.get(userName).messages;
+            User user = new User(userName, null);
+            PriorityQueue<Message> messages = users.get(user).messages;
             while ((message = messages.poll()) != null){
                 JSONObject jsonMessage = new JSONObject();
                 jsonMessage.put("content", message.content);
@@ -98,12 +99,11 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
 
     private void signUp(JSONObject jsonRequest, JSONObject jsonResponse) throws JSONException {
         String userName = jsonRequest.getString("userName");
-        if (!users.containsKey(userName)) {
-            String password = jsonRequest.getString("password");
-            User user = new User(userName, password);
+        String password = jsonRequest.getString("password");
+        User user = new User(userName, password);
+        if (!users.containsKey(user)) {
             users.put(user, user);
             jsonResponse.put("result", "user created");
-
         } else {
             jsonResponse.put("result", "user name already exists");
         }
@@ -120,7 +120,8 @@ public class MainServlet extends javax.servlet.http.HttpServlet {
     }
 
     private boolean validateUser(String userName, String password){
-        User existingUser = users.get(userName);
+        User user = new User(userName, password);
+        User existingUser = users.get(user);
         return existingUser != null && existingUser.password.equals(password);
     }
 
