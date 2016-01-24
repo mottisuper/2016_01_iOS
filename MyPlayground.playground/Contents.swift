@@ -1,11 +1,11 @@
 var x = 8;
 x = 10;
-//x = "hello";
+//x = "hello"; //will generate an error
 var y:Int;
 y = 20;
 
 let s1:String = "Hello";
-//s1 = "hi";
+//s1 = "hi"; //will generate an error
 
 //String, Int, Float, Double, Bool
 
