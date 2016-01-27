@@ -110,10 +110,7 @@ func myFunc(x: Int, y: Int)->Int{
 }
 
 
-//distance
-//product
-//quotient(x,y) how many whole time y fits in x
-//remainder(x, y)
+
 
 
 
