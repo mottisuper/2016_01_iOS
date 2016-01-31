@@ -18,7 +18,7 @@
 //8. write a function that takes an integer as a parameter, and will return its largest digit. i.e largestDigit(123)->3
 //9. write a function that takes an integer as a parameter, and will return it in reversed order of digits. reverseDigits(123)->321
 //10. (hard) write a function that takes an integer as a parameter, and will return the sum of its prime factors 
-//11.
+//11. do 5 again, but this time, do not use any loops (for/while), do not call other functions
 
 
 
@@ -179,9 +179,49 @@ func reverseDigits(var x: Int)->Int{
 }
 
 
+func printPrimeFactors(x: Int){
+    let max = sqrt(x);
+    var isPrime = true;
+    if(x == 2){
+        print("2");
+        return;
+    }
+    for(var i=2; i<=max; i++){
+        if(x % i == 0){
+            isPrime = false;
+            let factor1 = i;
+            let factor2 = x/i;
+            printPrimeFactors(factor1);
+            printPrimeFactors(factor2);
+            break;
+        }
+    }
+    if(isPrime){
+        print(x);
+    }
+}
 
 
+func sumOfPrimeFactors(x: Int)->Int{
+    let max = sqrt(x);
+    var isPrime = true;
+    if(x == 2){
+        return 2;
+    }
+    for(var i=2; i<=max; i++){
+        if(x % i == 0){
+            isPrime = false;
+            let factor1 = i;
+            let factor2 = x/i;
+            return sumOfPrimeFactors(factor1) + sumOfPrimeFactors(factor2);
+        }
+    }
+    if(isPrime){
+        return x;
+    }
+}
 
+print(sumOfPrimeFactors(12345678));
 
 
 
