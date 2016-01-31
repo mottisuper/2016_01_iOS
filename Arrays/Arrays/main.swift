@@ -42,9 +42,10 @@ for i in 0 ..< myArray.count{
 
 //homework
 //write a function that takes as a parameter an array of integers, and sorts the array in an acsending order.
+//DO NOT create an array!!! not even a temp one
 
-
-
+var myArray4 = [Int]();
+myArray4.append(1000);
 
 
 
