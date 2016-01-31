@@ -221,7 +221,7 @@ func sumOfPrimeFactors(x: Int)->Int{
     }
 }
 
-print(sumOfPrimeFactors(12345678));
+
 
 
 
