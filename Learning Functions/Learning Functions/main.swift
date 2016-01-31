@@ -17,7 +17,8 @@
 //7. write a function that takes an integer as a parameter, and will return its sum of digits. i.e sumOfDigits(123)->6
 //8. write a function that takes an integer as a parameter, and will return its largest digit. i.e largestDigit(123)->3
 //9. write a function that takes an integer as a parameter, and will return it in reversed order of digits. reverseDigits(123)->321
-
+//10. (hard) write a function that takes an integer as a parameter, and will return the sum of its prime factors 
+//11.
 
 
 
@@ -94,6 +95,89 @@ func remainder(x: Int, y: Int)->Int{
 //let (q,r) = quotient2(7, y: 3);
 //print("3 fits in 7 \(q) times with a remainder of \(r)");
 //print(quotient2(7, y: 3));
+
+
+func power(x: Int, y: Int)->Int{
+    if(x == 0){
+        if(y == 0){
+            return -1;
+        }
+        return 0;
+    }
+    if(y == 0 || x == 1){
+        return 1;
+    }
+    var result = x;
+    for(var i=1 ; i<y ; i++){
+        result *= x;
+    }
+    return result;
+}
+func powerNoLoops(x: Int, y: Int)->Int{ //recursive call
+    if(x == 0){
+        if(y == 0){
+            return -1;
+        }
+        return 0;
+    }
+    if(y == 0 || x == 1){
+        return 1;
+    }
+    if(y == 1){ //stopping condition
+        return x;
+    }
+    return powerNoLoops(x, y: y-1) * x;
+}
+//powerNoLoops(7, y: 4);
+//powerNoLoops(7, y: 3) * 7;
+//(powerNoLoops(7, y: 2) * 7) * 7;
+//((powerNoLoops(7, y: 1) * 7) * 7) * 7;
+//((7 * 7) * 7) * 7;
+func sqrt(x: Int)->Int{
+    if(x<0){
+        return -1;
+    }
+    var result = 0;
+    while(result * result < x){
+        result++;
+    }
+    return result;
+}
+
+func sumOfDigits(var x: Int)->Int{
+    var result = 0;
+    while(x != 0){
+        let lastDigit = x % 10;
+        x /= 10
+        
+        result += lastDigit;
+    }
+    return result;
+}
+
+func largestDigit(var x: Int)->Int{
+    var result = 0;
+    while(x != 0){
+        let lastDigit = x % 10;
+        x /= 10
+        
+        if(lastDigit > result){
+            result = lastDigit;
+        }
+    }
+    return result;
+}
+
+func reverseDigits(var x: Int)->Int{
+    var result = 0;
+    while(x != 0){
+        let lastDigit = x % 10;
+        x /= 10
+        result = result * 10 + lastDigit;
+    }
+    return result;
+}
+
 
 
 
