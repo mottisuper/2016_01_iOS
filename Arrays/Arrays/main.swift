@@ -31,13 +31,13 @@ myArray3.append(true);
 func myFunc(inout arr: [Int]){
     arr[0] = 99;
 }
-
+/*
 myFunc(&myArray);
 
 for i in 0 ..< myArray.count{
     print(myArray[i]);
 }
-
+*/
 
 
 //homework
@@ -46,6 +46,34 @@ for i in 0 ..< myArray.count{
 
 var myArray4 = [Int]();
 myArray4.append(1000);
+
+
+//let's try to understand better what is "inout"
+//If you don't write anything before the parameter name, then it is a "let".
+//If you write "var", then you can mutate (change) the parameter's value, but, anyway it is a local copy of the original one, meaning, any change will NOT be reflected to the original variable.
+//If you write "inout", then, the function receives a pointer to the original object. meaning, it receives a reference to the object. Meaning, any change that is done from within the function, is reflected to the original object, hence, after the function ends, when you look at the variable you have sent to function, you can see the change. when you use "inout", when you invoke the function, you must send the parameter with &.
+//  Another important thing about inout: not only that you mutate the original object's value, but also, you can mutate the actual pointer.
+
+var x:Int = 8;
+func change(var param: Int){
+    param = 13;
+    print(x);
+    
+}
+
+change(x);
+print("the value of x is \(x)");
+
+
+
+//exercise 1: return the largest int in a given array
+//exercise 2: return(double) the average of integers in a given array
+//exercise 3: reverse the order of the numbers in a given array
+//exercise 4: a function takes two arrays of integers, and returns true if the second parameter is contained in the first one.
+//param1 :   [3,57,213,84,12,56,96]
+//param2 :   [213,84,2]
+
+
 
 
 
