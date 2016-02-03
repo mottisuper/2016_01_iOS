@@ -61,8 +61,8 @@ func change(var param: Int){
     
 }
 
-change(x);
-print("the value of x is \(x)");
+//change(x);
+//print("the value of x is \(x)");
 
 
 
@@ -73,11 +73,82 @@ print("the value of x is \(x)");
 //param1 :   [3,57,213,84,12,56,96]
 //param2 :   [213,84,2]
 
+func largestNumber(numbers: [Int])->Int?{
+    if(numbers.count == 0){
+        return nil;
+    }
+    var result = numbers[0];
+    for(var i=1; i<numbers.count; i++){
+        if(numbers[i] > result){
+            result = numbers[i];
+        }
+    }
+    return result;
+}
 
+func average(numbers: [Int])throws->Double{
+    if(numbers.isEmpty){
+        throw NSError(domain: "empty set", code: 1, userInfo: nil);
+    }
+    var sum = 0;
+    for(var i=0;i<numbers.count;i++){
+        sum += numbers[i];
+    }
+    return Double(sum) / Double(numbers.count);
+}
 
+func reverseDigits(inout numbers: [Int]){
+    for(var i=0; i < numbers.count/2; i++){
+        let temp = numbers[i];
+        numbers[i] = numbers[numbers.count-1-i];
+        numbers[numbers.count-1-i] = temp;
+    }
+}
+myArray = [];
+//reverseDigits(&myArray);
+//print(myArray);
+do{
+    let avg = try average(myArray);
+    print(avg);
+}catch{
+    print("there was an error");
+}
+//i=1
+let arr1 = [3,7,19,2,7,19,2,56];
+let arr2 = [7,19,2];
+func doesContain(arr1: [Int], arr2: [Int])->Bool{
+    for(var i=0;i<arr1.count - arr2.count + 1;i++){
+        if(arr1[i] == arr2[0]){
+            var f = false;
+            for(var j=i+1;j<i+arr2.count;j++){
+                if(arr1[j] != arr2[j-i]){
+                    f = true;
+                    break;
+                }
+            }
+            if(f==false){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+print("does contain: \(doesContain(arr1, arr2: arr2))");
+for x in arr1{
+    
+}
 
+/*
+//##Elad Lavi##
 
+smb://10.0.0.241/n/
+hackeru
+777
 
+MAC
+hackeru
+Aa123456
+*/
 
 
 
