@@ -1,0 +1,23 @@
+
+
+func sorting(inout arr:[Int]){
+    var ptr:Int=0;
+    var ptr_head:Int=0;
+    for(ptr_head=0;ptr_head<arr.count;ptr_head++){
+        for(ptr=ptr_head;ptr<arr.count;ptr++){
+            if(arr[ptr_head]>arr[ptr]){
+                let temp:Int = arr[ptr];
+                arr[ptr]=arr[ptr_head];
+                arr[ptr_head]=temp;
+            }
+            print("ptr_head= \(ptr_head)")
+            print("ptr= \(ptr)")
+            print("\(arr)")
+            
+        }
+    }
+}
+
+var myArray:[Int] = [5,2,1,4,6,3];
+sorting(&myArray);
+print("\(myArray)");
