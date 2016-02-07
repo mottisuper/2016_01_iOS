@@ -51,5 +51,15 @@ let myComparsion = { (x: Int, y: Int) -> Bool in
 print(myComparsion(4,3));
 
 
+sortArray(&arr, sortBy:  { (a: Int, b: Int) -> Bool in
+    return a > b;
+});
+
+
+
+
+
+
+
 
 
