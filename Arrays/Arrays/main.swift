@@ -149,6 +149,30 @@ MAC
 hackeru
 Aa123456
 */
+func sortArray(inout arr: [Int]){
+    // a   b   c
+    var isSorted = false;
+    var counter = arr.count - 1;
+    while(!isSorted){
+        isSorted = true;
+        for(var i=0;i<counter;i++){
+            if(arr[i] > arr[i+1]){
+                isSorted = false;
+                let temp = arr[i];
+                arr[i] = arr[i+1];
+                arr[i+1] = temp;
+            }
+        }
+        counter--;
+    }
+}
+
+
+
+
+
+
+
 
 
 
